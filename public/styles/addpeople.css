@@ -1,0 +1,53 @@
+
+.invite {
+	margin: 0 auto;
+	width: 200px;
+	height: 50px;
+}
+
+.friend {
+	width: 200px;
+	margin-bottom: 20px;
+}
+
+.friendPicture {
+	clear: both;
+	border-radius: 100%;
+}
+
+.attendeeList p {
+	clear: both;
+	float: right;
+}
+
+.invitePerson {
+	float: left;
+	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+	background: none;
+	border: 2px solid #333;
+	outline: none;
+}
+
+.invite p {
+	float: right;
+}
+
+.invite input {
+	float: right;
+	width: 130px;
+	margin-top: 10px;
+	height: 30px;
+	border: none;
+	border-bottom: 2px solid #333;
+}
+
+.phoneNumber {
+
+}
+
+.inviteAction {
+	margin-bottom: 20px;
+	float: right;
+}
