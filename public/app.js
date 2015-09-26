@@ -10,9 +10,16 @@ angular.module('eetup')
 			controller: 'homeCtrl'
 		})
 
+
 		.when('/time', {
 			templateUrl: 'views/time.html',
 			controller: 'timeCtrl'
+		})
+
+		// Vote page
+		.when('/vote', {
+			templateUrl: 'views/vote.html',
+			controller: 'voteCtrl'
 		})
 
 		.otherwise({
