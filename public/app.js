@@ -68,6 +68,8 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 		$scope.visible ? $scope.visible = false : $scope.visible = true;
 	}
 
+	$scope.personTel;
+
 	$scope.possibleAttendees = [
 		{
 			name: "Fifi",
@@ -101,5 +103,15 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 		}
 	];
 
-	$scope.attendees = $scope.possibleAttendees;
-}]);
+	$scope.attendees = [];
+
+
+	$scope.addPerson = function() {
+		for(var i = 0; i < $scope.possibleAttendees.length; i++) {
+			if($scope.personTel == $scope.possibleAttendees[i].number) {
+				$scope.attendees.push($scope.possibleAttendees[i]);
+			}
+		}	
+	}
+
+	}]);

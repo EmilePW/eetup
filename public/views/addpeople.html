@@ -12,11 +12,11 @@
 		+
 	</button>
 	<p ng-show="visible">Invite More Friends</p>
-	<input ng-hide="visible" class="phoneNumber" type="tel" />
-	<button class="inviteAction" ng-hide="visible" ng-click="visible = false;">
+	<input ng-model="personTel" ng-hide="visible" class="phoneNumber" type="tel" />
+	<button class="inviteAction" ng-hide="visible" ng-click="addPerson(); showInput()">
 		<i class="fa fa-check-circle"></i>
 	</button>
-	<button class="inviteAction" ng-hide="visible">
+	<button class="inviteAction" ng-hide="visible" ng-click="showInput()">
 		<i class="fa fa-times-circle"></i>
 	</button>
 </div>
