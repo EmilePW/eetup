@@ -10,7 +10,16 @@ angular.module('eetup')
 			controller: 'homeCtrl'
 		})
 
+		.when('/time', {
+			templateUrl: 'views/time.html',
+			controller: 'timeCtrl'
+		})
+
 		.otherwise({
 			redirectTo: '/'
 		})
+}]);
+
+angular.module('eetup').controller(['$scope', function($scope) {
+
 }]);
