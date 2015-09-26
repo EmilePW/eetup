@@ -10,6 +10,12 @@ angular.module('eetup')
 			controller: 'homeCtrl'
 		})
 
+		// Vote page
+		.when('/vote', {
+			templateUrl: 'views/vote.html',
+			controller: 'voteCtrl'
+		})
+
 		.otherwise({
 			redirectTo: '/'
 		})
