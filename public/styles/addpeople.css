@@ -1,6 +1,7 @@
 .attendeeList {
 	width: 200px;
 	margin: 0 auto;
+	margin-top: 10px;
 }
 
 .invite {
@@ -11,7 +12,7 @@
 
 .friend {
 	width: 200px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .friend p{
@@ -30,10 +31,12 @@
 	background: none;
 	border: 2px solid #333;
 	outline: none;
+	font-size: 30px;
 }
 
 .invite p {
 	float: right;
+	margin-top: 15px;
 }
 
 .invite input {
@@ -43,6 +46,8 @@
 	height: 30px;
 	border: none;
 	border-bottom: 2px solid #333;
+	background: none;
+	outline: none;
 }
 
 .phoneNumber {
@@ -50,6 +55,43 @@
 }
 
 .inviteAction {
+	width: 30px;
+	height: 30px;
 	margin-bottom: 20px;
 	float: right;
+	border: none;
+	outline: none;
+	border-radius: 100%;
+}
+
+#tick {
+	background: rgba(46, 204, 113,1.0)
+}
+
+#close {
+	margin-right: 20px;
+	background: rgba(192, 57, 43,1.0);
+}
+
+#done {
+	position: absolute;
+	top: 450px;
+	clear: both;
+	width: 30%;
+	left: 35%;
+}
+
+#done button {
+	width: 80px;
+	height: 80px;
+	background: rgba(25, 25, 25, 0.3);
+	border: none;
+	border-radius: 100%;
+	outline: none;
+	color: #fff;
+	font-size: 40px;
+}
+
+#done button:hover {
+	background: rgba(25, 25, 25, 1);
 }

@@ -17,16 +17,18 @@
 		</button>
 	<p ng-show="visible">Invite More Friends</p>
 	<input ng-model="personTel" ng-hide="visible" class="phoneNumber" type="tel" />
-	<button class="inviteAction" ng-hide="visible" ng-click="addPerson(); showInput()">
-		<i class="fa fa-check-circle"></i>
+	<button id="tick" class="inviteAction" ng-hide="visible" ng-click="addPerson(); showInput()">
+		<i class="fa fa-check"></i>
 	</button>
-	<button class="inviteAction" ng-hide="visible" ng-click="showInput()">
-		<i class="fa fa-times-circle"></i>
+	<button id="close" class="inviteAction" ng-hide="visible" ng-click="showInput()">
+		<i class="fa fa-times"></i>
 	</button>
 </div>
 
-<a href="#vote">
-	<button>
-		All Done
-	</button>
-</a>
+<div id="done" class="row text-center">
+	<a href="#vote">
+		<button>
+			<i class="fa fa-thumbs-o-up"></i>
+		</button>
+	</a>
+</div>

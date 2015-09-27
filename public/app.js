@@ -115,7 +115,7 @@ angular.module('eetup').controller('homeCtrl', ['$scope', 'PreferenceData', func
 angular.module('eetup').controller('timeCtrl', ['$scope', function($scope) {
 	$scope.getTimes = function(timeNow) {
 		var times = [];
-		for(var i = timeNow; i <= 24; i = i + 0.5) {
+		for(var i = timeNow; i < 24; i = i + 0.5) {
 			var minutes = i === Math.floor(i) ? '00' : '30';
 			var hours = i < 10 ? '0' + Math.floor(i) : Math.floor(i);
 			times.push(hours + ':' + minutes);
@@ -136,7 +136,13 @@ angular.module('eetup').controller('timeCtrl', ['$scope', function($scope) {
 			$scope.currentIndex = ($scope.currentIndex - 1) % $scope.times.length;
 	}
 
-	$scope.times = $scope.getTimes(0);
+	$scope.date = new Date;
+
+	$scope.timeNow = $scope.date.getUTCHours() + 1;
+
+	console.log($scope.timeNow);
+
+	$scope.times = $scope.getTimes($scope.timeNow + 1);
 
 
 }]);
@@ -305,9 +311,11 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 	$scope.addPerson = function() {
 		for(var i = 0; i < $scope.possibleAttendees.length; i++) {
 			if($scope.personTel == $scope.possibleAttendees[i].number) {
-				$scope.attendees.push($scope.possibleAttendees[i]);
+				$scope.attendees.push($scope.possibleAttendees.splice(i, 1)[0]);
 			}
-		}	
+		}
+
+		$scope.personTel = '';
 	}
 
 }]);
