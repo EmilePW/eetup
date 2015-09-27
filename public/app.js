@@ -51,6 +51,11 @@ angular.module('eetup')
 			controller: 'bookedCtrl'
 		})
 
+		.when('/map', {
+			templateUrl: 'views/map.html',
+			controller: 'mapCtrl'
+		})
+
 		.otherwise({
 			redirectTo: '/'
 		})
@@ -107,13 +112,20 @@ angular.module('eetup').factory('PlaceData', ['$http', function($http) {
 	var placeCandidates = [];
 
 	var chosenPlaceName = 'Dishooms';
+	var chosenPlace;
 
 	return {
 		savePlaceName: function(place) {
 			chosenPlaceName = place.name;
 		},
+		savePlace: function(place) {
+			chosenPlace = place;
+		},
 		getPlaceName: function() {
 			return chosenPlaceName;
+		},
+		getPlace: function() {
+			return chosenPlace;
 		}
 	}
 }]);
@@ -413,8 +425,14 @@ angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'Prefe
 
 	$scope.findPlaces();
 
+
+
 	$scope.savePlace = function(place) {
 		PlaceData.savePlaceName(place);
+	}
+
+	$scope.saveThePlace = function(place) {
+		PlaceData.savePlace(place);
 	}
 	
 }]);
@@ -442,5 +460,61 @@ angular.module('eetup').controller('bookedCtrl', ['$scope', 'TimeData', 'PlaceDa
 	$scope.chosenTime = chosenTime;
 	$scope.chosenPlaceName = chosenPlaceName;
 
+}]);
+
+angular.module('eetup').controller('mapCtrl', ['$scope', 'PlaceData', function($scope, PlaceData) {
+	$scope.currentLocation = {
+		latitude: 51.5180041,
+		longitude: -0.0908493
+	};
+
+	$scope.makeMap = function() {
+		var directionsService = new google.maps.DirectionsService;
+		var directionsDisplay = new google.maps.DirectionsRenderer;
+		var mapCanvas = document.getElementById('map');
+        var mapOptions = {
+          center: new google.maps.LatLng(
+          	$scope.currentLocation.latitude,
+          	$scope.currentLocation.longitude
+          ),
+          zoom: 18,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        directionsDisplay.setMap(map);
+
+    	$scope.findDirections(directionsService, directionsDisplay);
+    }
+
+    $scope.findDirections = function(directionsService, directionsDisplay) {
+    	var dest = {
+    		latitude: 51.5480041,
+			longitude: -0.1208493
+    	};
+
+
+    	var request = {
+    		origin: new google.maps.LatLng(
+	        	$scope.currentLocation.latitude,
+	          	$scope.currentLocation.longitude
+	        ),
+    		destination: new google.maps.LatLng(
+    			dest.latitude,
+    			dest.longitude
+    		),
+    		travelMode: google.maps.TravelMode.WALKING
+    	}
+
+    	directionsService.route(request, function(response, status) {
+			if (status === google.maps.DirectionsStatus.OK) {
+				console.log(response);
+				directionsDisplay.setDirections(response);
+			} else {
+				console.log(status);
+			}
+		});
+    }
+
+    $scope.makeMap();
 }]);
 
