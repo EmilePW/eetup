@@ -1,11 +1,13 @@
 <link href="styles/home.css" rel="stylesheet"/>
 
-<div class="row" ng-repeat="type in types">
-	<div class="xs-6 xs-offset-3 text-center">
-		<a href="#chooseMethod">
-			<button class="chooseType" ng-click="saveType(type)">
-				{{ type.name }}
-			</button>
-		</a>
+<div class="chooseType">
+	<div class="row" ng-repeat="type in types">
+		<div class="xs-6 xs-offset-3 text-center">
+			<a href="#chooseMethod">
+				<button ng-click="saveType(type)">
+					{{ type.name }}
+				</button>
+			</a>
+		</div>
 	</div>
 </div>

@@ -28,15 +28,15 @@
 .timeChoose button {
 	background: none;
 	border: 1px solid #333;
-	width: 300px;
-	height: 50px;
+	width: 200px;
+	height: 100px;
+	fon
 }
 
 .chooseTime {
 	display: inline-block;
 	position: absolute;
-	overflow: auto;
-	
+	overflow: auto;	
 }
 
 .timeSlider {
