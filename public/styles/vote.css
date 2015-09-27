@@ -26,3 +26,20 @@ button.no-margin {
 .gray {
 	color: gray;
 }
+
+img.tube {
+	width: 20px;
+	height: 20px;
+}
+
+.map {
+	width: 250px;
+	height: 250px;
+}
+
+.green-circle {
+	height: 30px;
+	width: 30px;
+	background-color: green;
+	border-radius: 50%;
+}

@@ -22,10 +22,50 @@ angular.module('eetup')
 			controller: 'voteCtrl'
 		})
 
+		.when('/waiting', {
+			templateUrl: 'views/waiting.html',
+			controller: 'waitingCtrl'
+		})
+
+		.when('/booked', {
+			templateUrl: 'views/booked.html',
+			controller: 'bookCtrl'
+		})
+
 		.otherwise({
 			redirectTo: '/'
 		})
 }]);
+
+
+
+angular.module('eetup').controller('waitingCtrl', ['$scope', '$http', function($scope, $http) {
+	setTimeout(function(){ 
+		window.location.href = "#/booked";
+	}
+	, 3000);
+	
+
+	// $scope.timerRunning = true;
+ 
+ //            $scope.startTimer = function (){
+ //                $scope.$broadcast('timer-start');
+ //                $scope.timerRunning = true;
+ //            };
+ 
+ //            $scope.stopTimer = function (){
+ //                $scope.$broadcast('timer-stop');
+ //                $scope.timerRunning = false;
+ //            };
+ 
+ //            $scope.$on('timer-stopped', function (event, data){
+ //                console.log('Timer Stopped - data = ', data);
+ //            });
+
+ //            $scope.startTimer();
+	
+}]);
+
 
 angular.module('eetup').controller('voteCtrl', ['$scope', '$http', function($scope, $http) {
 	console.log('hi');
