@@ -3,15 +3,7 @@
 }
 
 #timePicker {
-	position: absolute;
-    height: auto;
-    width: auto;    
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);    
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+	
 }
 
 .changeTime {
@@ -54,6 +46,6 @@
 }
 
 .question {
-	margin-top: 400px;
+	margin-top: 50px;
 	font-size: 20px;
 }
