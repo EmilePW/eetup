@@ -2,15 +2,19 @@
 <link rel="stylesheet" href="styles/vote.css"/>
 <div id="map"></div>
 
-<button ng-click="findPlaces()"></button>
+<button id="refresher" ng-click="findPlaces()"></button>
 
 <div class="voteOptions">
-	<div ng-repeat="candidate in placeCandidates">
-		{{ candidate.name }}
-		{{ candidate.rating }}
-		<a href="#waiting">
-			<button ng-click="savePlace(candidate)">Vote</button>
-		</a>
+	<div class="row text-center" ng-repeat="candidate in placeCandidates">
+		<div class="col-xs-8">
+			<h4><strong>{{ candidate.name }}</strong></h4>
+			<h5>{{ candidate.rating }} / 5</h5>
+		</div>
+		<div class="col-xs-4">
+			<a href="#waiting">
+				<button class="voteButton" ng-click="savePlace(candidate)">Vote</button>
+			</a>
+		</div>
 	</div>
 </div>
 

@@ -32,5 +32,30 @@ html, body {
 }
 
 #map {
-	height: 400px;
+	height: 200px;
+}
+
+.voteOptions .row {
+	margin-bottom: 20px;
+}
+
+.voteButton {
+	width: 50px;
+	height: 50px;
+	background: rgba(25, 25, 25, 0.3);
+	border: none;
+	border-radius: 100%;
+	outline: none;
+	color: #fff;
+	font-size: 16px;
+}
+
+.voteButton:hover {
+	background: rgba(25, 25, 25, 0.8);
+}
+
+#refresher {
+	width: 100%;
+	height: 30px;
+	opacity: 0;
 }

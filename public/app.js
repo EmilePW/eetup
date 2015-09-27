@@ -237,25 +237,32 @@ angular.module('eetup').controller('choosePreferenceCtrl', ['$scope', 'Preferenc
 	$scope.allPreferences = {
 		restaurants: [
 			{
-				name: "Veg"
+				name: "Veg",
+				value: "Veg"
 			},
 			{
-				name: "Heavy"
+				name: "Heavy",
+				value: "Burger"
 			},
 			{
-				name: "Protein"
+				name: "Protein",
+				value: "Chicken"
 			},
 			{
-				name: "Vegan"
+				name: "Vegan",
+				value: "Vegan"
 			},
 			{
-				name: "Spicy"
+				name: "Spicy",
+				value: "Indian"
 			},
 			{
-				name: "Junk"
+				name: "Junk",
+				value: "Fast Food"
 			},
 			{
-				name: "Themed"
+				name: "Themed",
+				value: "Pop up"
 			}
 		],
 		bars: [
@@ -309,25 +316,25 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 		{
 			name: "David",
 			picture: "images/david.jpg",
-			number: 07798121992,
+			number: 2,
 			location: ""
 		},
 		{
 			name: "Richard",
 			picture: "images/richard.jpg",
-			number: 07798121993,
+			number: 33,
 			location: ""
 		},
 		{
 			name: "Viraj",
 			picture: "images/viraj.jpg",
-			number: 07798121994,
+			number: 4,
 			location: ""
 		},
 		{
 			name: "Emile",
 			picture: "images/emile.jpg",
-			number: 07798121995,
+			number: 5,
 			location: ""
 		}
 	];
@@ -345,6 +352,8 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 		$scope.personTel = '';
 	}
 
+	$scope.showInput();
+
 }]);
 
 angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'PreferenceData', 'PlaceData', function($scope, LocationData, PreferenceData, PlaceData) {
@@ -355,7 +364,7 @@ angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'Prefe
 		var service;
 		var infowindow;
 		var chosenLocation = LocationData.getArea().location;
-		var chosenPreference = PreferenceData.getPreference().name;
+		var chosenPreference = PreferenceData.getPreference().value;
 		var chosenType = PreferenceData.getType();
 
 		function initialize() {
@@ -364,7 +373,7 @@ angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'Prefe
 
 		  map = new google.maps.Map(document.getElementById('map'), {
 		      center: theLocation,
-		      zoom: 15
+		      zoom: 14
 		    });
 
 		  var request = {
@@ -386,6 +395,15 @@ angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'Prefe
 		    for(var i = 0; i < 3; i++) {
 		    	var randomNum = Math.floor(Math.random() * results.length);
 		    	$scope.placeCandidates.push(results.splice(randomNum, 1)[0]);
+		    	var marker = new google.maps.Marker({
+		          map: map,
+		          position: $scope.placeCandidates[i].geometry.location
+		        });
+
+		        console.log($scope.placeCandidates[i]);
+		        if(!$scope.placeCandidates[i].rating) {
+		        	$scope.placeCandidates[i].rating = 3.8;
+		        }
 		    }
 		  }
 		}
