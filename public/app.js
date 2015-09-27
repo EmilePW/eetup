@@ -339,7 +339,7 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 		}
 	];
 
-	$scope.attendees = [];
+	$scope.attendees = [$scope.possibleAttendees[4]];
 
 
 	$scope.addPerson = function() {
