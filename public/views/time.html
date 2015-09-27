@@ -13,3 +13,9 @@
 		</button>
 	</div>
 </div>
+
+<div class="timeSlider">
+	<button class="chooseTime" ng-repeat="time in times" ng-style="{ 'left': ' {{ $index * 80 }}px' }">
+		{{ time }}
+	</button>
+</div>

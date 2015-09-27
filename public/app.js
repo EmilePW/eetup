@@ -208,7 +208,7 @@ angular.module('eetup').controller('choosePreferenceCtrl', ['$scope', 'Preferenc
 				name: "Spicy"
 			},
 			{
-				name: "Greasy"
+				name: "Junk"
 			},
 			{
 				name: "Themed"
