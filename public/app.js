@@ -310,7 +310,7 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 		{
 			name: "Fifi",
 			picture: "images/fifi.jpg",
-			number: 07798121991,
+			number: 07583154724,
 			location: ""
 		},
 		{
