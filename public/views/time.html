@@ -7,7 +7,7 @@
 		</button>
 		<div class="timeChoose" ng-repeat="time in times" ng-show="$index === currentIndex">
 			<a href="#chooseMethod">
-				<button ng-click="">
+				<button ng-click="saveTime(time)">
 				{{ time }}
 				</button>
 			</a>

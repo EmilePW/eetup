@@ -8,7 +8,10 @@
 	<div ng-repeat="candidate in placeCandidates">
 		{{ candidate.name }}
 		{{ candidate.rating }}
-		<button ng-click="savePlace(candidate)">Vote</button>
+		<a href="#waiting">
+			<button ng-click="savePlace(candidate)">Vote</button>
+		</a>
+		
 	</div>
 </div>
 

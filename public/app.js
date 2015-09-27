@@ -48,7 +48,7 @@ angular.module('eetup')
 
 		.when('/booked', {
 			templateUrl: 'views/booked.html',
-			controller: 'bookCtrl'
+			controller: 'bookedCtrl'
 		})
 
 		.otherwise({
@@ -65,6 +65,20 @@ angular.module('eetup').factory('LocationData', ['$http', function($http) {
 		},
 		getArea: function() {
 			return chosenArea;
+		}
+	}
+}]);
+
+angular.module('eetup').factory('TimeData', ['$http', function($http) {
+	var chosenTime;
+
+	return {
+		saveTime: function(time) {
+			chosenTime = time;
+			console.log(chosenTime);
+		},
+		getTime: function() {
+			return chosenTime;
 		}
 	}
 }]);
@@ -112,7 +126,7 @@ angular.module('eetup').controller('homeCtrl', ['$scope', 'PreferenceData', func
 	}
 }]);
 
-angular.module('eetup').controller('timeCtrl', ['$scope', function($scope) {
+angular.module('eetup').controller('timeCtrl', ['$scope', 'TimeData', function($scope, TimeData) {
 	$scope.getTimes = function(timeNow) {
 		var times = [];
 		for(var i = timeNow; i <= 24; i = i + 0.5) {
@@ -137,6 +151,10 @@ angular.module('eetup').controller('timeCtrl', ['$scope', function($scope) {
 	}
 
 	$scope.times = $scope.getTimes(0);
+
+	$scope.saveTime = function(time) {
+		TimeData.saveTime(time);
+	}
 
 
 }]);
@@ -387,5 +405,13 @@ angular.module('eetup').controller('waitingCtrl', ['$scope', '$http', function($
 		window.location.href = "#/booked";
 	}
 	, 6000);
+}]);
+
+// Restaurant booked controller
+angular.module('eetup').controller('bookedCtrl', ['$scope', 'TimeData', function($scope, TimeData) {
+	var chosenTime = TimeData.getTime();
+
+	$scope.chosenTime = chosenTime;
+
 }]);
 
