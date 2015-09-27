@@ -1,0 +1,42 @@
+img.tube {
+	width: 20px;
+	height: 20px;
+}
+
+.map {
+	width: 150px;
+	height: 150px;
+}
+
+.green-circle {
+	height: 30px;
+	width: 30px;
+	background-color: green;
+	border-radius: 50%;
+}
+
+.voted-to {
+	background-color: blue;
+	background-color: #6CBAE0;
+	color: white;
+	width: 100%;
+	padding-bottom: 1px;
+	padding-top: 1px;
+}
+
+#info {
+	background-color: white;
+	height: 525px;
+}
+
+#rest-info {
+	padding: 10px;
+}
+
+img.full-width {
+	width: 100%;
+}
+
+hr {
+	margin: 5px;
+}
