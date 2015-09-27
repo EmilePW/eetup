@@ -322,7 +322,7 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 		{
 			name: "Richard",
 			picture: "images/richard.jpg",
-			number: 33,
+			number: 3,
 			location: ""
 		},
 		{
