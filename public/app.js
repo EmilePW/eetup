@@ -106,7 +106,16 @@ angular.module('eetup').factory('PreferenceData', ['$http', function($http) {
 angular.module('eetup').factory('PlaceData', ['$http', function($http) {
 	var placeCandidates = [];
 
-	return 0;
+	var chosenPlaceName = 'Dishooms';
+
+	return {
+		savePlaceName: function(place) {
+			chosenPlaceName = place.name;
+		},
+		getPlaceName: function() {
+			return chosenPlaceName;
+		}
+	}
 }]);
 
 angular.module('eetup').controller('homeCtrl', ['$scope', 'PreferenceData', function($scope, PreferenceData) {
@@ -338,7 +347,7 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 
 }]);
 
-angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'PreferenceData', function($scope, LocationData, PreferenceData) {
+angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'PreferenceData', 'PlaceData', function($scope, LocationData, PreferenceData, PlaceData) {
 	$scope.placeCandidates = [];
 
 	$scope.findPlaces = function() {
@@ -385,6 +394,10 @@ angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'Prefe
 	}
 
 	$scope.findPlaces();
+
+	$scope.savePlace = function(place) {
+		PlaceData.savePlaceName(place);
+	}
 	
 }]);
 
@@ -416,10 +429,12 @@ angular.module('eetup').controller('waitingCtrl', ['$scope', '$http', function($
 }]);
 
 // Restaurant booked controller
-angular.module('eetup').controller('bookedCtrl', ['$scope', 'TimeData', function($scope, TimeData) {
+angular.module('eetup').controller('bookedCtrl', ['$scope', 'TimeData', 'PlaceData', function($scope, TimeData, PlaceData) {
 	var chosenTime = TimeData.getTime();
+	var chosenPlaceName = PlaceData.getPlaceName();
 
 	$scope.chosenTime = chosenTime;
+	$scope.chosenPlaceName = chosenPlaceName;
 
 }]);
 
