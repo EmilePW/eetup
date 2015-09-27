@@ -17,7 +17,7 @@
 
 .friend p{
 	margin-top: 10px;
-	font-size: 22px;
+	font-size: 18px;
 }
 
 .friendPicture {
@@ -93,5 +93,5 @@
 }
 
 #done button:hover {
-	background: rgba(25, 25, 25, 1);
+	background: rgba(25, 25, 25, 0.8);
 }

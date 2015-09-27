@@ -1,4 +1,4 @@
-angular.module('eetup', ['ngRoute']);
+angular.module('eetup', ['ngRoute', 'ngAnimate']);
 
 angular.module('eetup')
 	.config(['$routeProvider', function($routeProvider) {
@@ -303,31 +303,31 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 		{
 			name: "Fifi",
 			picture: "images/fifi.jpg",
-			number: 1,
+			number: 07798121991,
 			location: ""
 		},
 		{
 			name: "David",
 			picture: "images/david.jpg",
-			number: 2,
+			number: 07798121992,
 			location: ""
 		},
 		{
 			name: "Richard",
 			picture: "images/richard.jpg",
-			number: 3,
+			number: 07798121993,
 			location: ""
 		},
 		{
 			name: "Viraj",
 			picture: "images/viraj.jpg",
-			number: 4,
+			number: 07798121994,
 			location: ""
 		},
 		{
 			name: "Emile",
 			picture: "images/emile.jpg",
-			number: 5,
+			number: 07798121995,
 			location: ""
 		}
 	];
