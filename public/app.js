@@ -364,8 +364,28 @@ angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'Prefe
 
 angular.module('eetup').controller('waitingCtrl', ['$scope', '$http', function($scope, $http) {
 	setTimeout(function(){ 
-		window.location.href = "#/booked";
+		$('#timer').text('1:59:59');
+	}
+	, 1000);
+	setTimeout(function(){ 
+		$('#timer').text('1:59:58');
+	}
+	, 2000);
+	setTimeout(function(){ 
+		$('#timer').text('1:59:57');
 	}
 	, 3000);
+	setTimeout(function(){ 
+		$('#timer').text('1:59:56');
+	}
+	, 4000);
+	setTimeout(function(){ 
+		$('#timer').text('1:59:55');
+	}
+	, 5000);
+	setTimeout(function(){ 
+		window.location.href = "#/booked";
+	}
+	, 6000);
 }]);
 
