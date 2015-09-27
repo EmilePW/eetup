@@ -402,30 +402,18 @@ angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'Prefe
 }]);
 
 angular.module('eetup').controller('waitingCtrl', ['$scope', '$http', function($scope, $http) {
-	setTimeout(function(){ 
-		$('#timer').text('1:59:59');
+	for (var i = 1; i <= 10; i++) {
+	    (function(index) {
+	        setTimeout(function() { 
+	        	$('#timer').text('1:59:5' + (10 - index));
+	        }, i * 1000);
+	    })(i);
 	}
-	, 1000);
-	setTimeout(function(){ 
-		$('#timer').text('1:59:58');
-	}
-	, 2000);
-	setTimeout(function(){ 
-		$('#timer').text('1:59:57');
-	}
-	, 3000);
-	setTimeout(function(){ 
-		$('#timer').text('1:59:56');
-	}
-	, 4000);
-	setTimeout(function(){ 
-		$('#timer').text('1:59:55');
-	}
-	, 5000);
+
 	setTimeout(function(){ 
 		window.location.href = "#/booked";
 	}
-	, 6000);
+	, 11000);
 }]);
 
 // Restaurant booked controller
