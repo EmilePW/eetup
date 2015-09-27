@@ -1,1 +1,12 @@
-Vote here
+<link rel="stylesheet" href="styles/vote.css"/>
+<div id="map"></div>
+
+<button ng-click="findPlaces()"></button>
+
+<div class="voteOptions">
+	<div ng-repeat="candidate in placeCandidates">
+		{{ candidate.name }}
+		{{ candidate.rating }}
+		<button ng-click="savePlace(candidate)">Vote</button>
+	</div>
+</div>

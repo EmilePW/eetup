@@ -10,10 +10,24 @@ angular.module('eetup')
 			controller: 'homeCtrl'
 		})
 
-
 		.when('/time', {
 			templateUrl: 'views/time.html',
 			controller: 'timeCtrl'
+		})
+
+		.when('/chooseMethod', {
+			templateUrl: 'views/chooseMethod.html',
+			controller: 'chooseMethodCtrl'
+		})
+
+		.when('/areaChoose', {
+			templateUrl: 'views/areaChoose.html',
+			controller: 'areaChooseCtrl'
+		})
+
+		.when('/choosePreference', {
+			templateUrl: 'views/choosePreference.html',
+			controller: 'choosePreferenceCtrl'
 		})
 
 		.when('/addpeople', {
@@ -30,6 +44,62 @@ angular.module('eetup')
 		.otherwise({
 			redirectTo: '/'
 		})
+}]);
+
+angular.module('eetup').factory('LocationData', ['$http', function($http) {
+	var chosenArea;
+
+	return {
+		saveArea: function(area) {
+			chosenArea = area;
+		},
+		getArea: function() {
+			return chosenArea;
+		}
+	}
+}]);
+
+angular.module('eetup').factory('PreferenceData', ['$http', function($http) {
+	var chosenType;
+	var chosenPreference;
+
+	return {
+		saveType: function(type) {
+			chosenType = type;
+		},
+		getType: function() {
+			return chosenType;
+		},
+		savePreference: function(preference) {
+			chosenPreference = preference;
+		},
+		getPreference: function() {
+			return chosenPreference;
+		}
+	}
+}]);
+
+angular.module('eetup').factory('PlaceData', ['$http', function($http) {
+	var placeCandidates = [];
+
+	return 0;
+}]);
+
+angular.module('eetup').controller('homeCtrl', ['$scope', 'PreferenceData', function($scope, PreferenceData) {
+	$scope.types = [
+		{
+			name: 'We want to eat',
+			value: 'restaurants'
+		},
+		{
+			name: 'We want to drink',
+			value: 'bars'
+		}
+	];
+
+	$scope.saveType = function(type) {
+		PreferenceData.saveType(type.value);
+	}
 }]);
 
 angular.module('eetup').controller('timeCtrl', ['$scope', function($scope) {
@@ -60,8 +130,123 @@ angular.module('eetup').controller('timeCtrl', ['$scope', function($scope) {
 
 }]);
 
+angular.module('eetup').controller('areaChooseCtrl', ['$scope', 'LocationData', function($scope, LocationData) {
+	$scope.areas = [
+		{
+			name: 'Soho',
+			location: {
+				latitude: 51.5131702,
+				longitude: -0.1355637
+			}
+		},
+		{
+			name: 'Covent Garden',
+			location: {
+				latitude: 51.512519,
+				longitude: -0.1270915
+			}
+		},
+		{
+			name: 'Mayfair',
+			location: {
+				latitude: 51.5092462,
+				longitude: -0.1471057
+			}
+		},
+		{
+			name: 'Shoreditch',
+			location: {
+				latitude: 51.52849,
+				longitude: -0.084728
+			}
+		},
+		{
+			name: 'Southbank',
+			location: {
+				latitude: 51.5057798,
+				longitude: -0.1166921
+			}
+		},
+		{
+			name: 'Brick Lane',
+			location: {
+				latitude: 51.5220028,
+				longitude: -0.0717137
+			}
+		},
+		{
+			name: 'Holborn',
+			location: {
+				latitude: 51.5172934,
+				longitude: -0.1184131
+			}
+		}
+	];
+
+	$scope.saveArea = function(area) {
+		LocationData.saveArea(area);
+	}
+	
+}]);
+
+angular.module('eetup').controller('choosePreferenceCtrl', ['$scope', 'PreferenceData', function($scope, PreferenceData) {
+	$scope.allPreferences = {
+		restaurants: [
+			{
+				name: "Veg"
+			},
+			{
+				name: "Heavy"
+			},
+			{
+				name: "Protein"
+			},
+			{
+				name: "Vegan"
+			},
+			{
+				name: "Spicy"
+			},
+			{
+				name: "Greasy"
+			},
+			{
+				name: "Themed"
+			}
+		],
+		bars: [
+			{
+				name: 'Craft Beers'
+			},
+			{
+				name: 'Wine Bars'
+			},
+			{
+				name: 'Bottle Service'
+			},
+			{
+				name: 'English Pubs'
+			},
+			{
+				name: 'High Society'
+			},
+			{
+				name: 'Bubbly'
+			},
+			{
+				name: 'Virgin'
+			}
+		]
+	};
+
+	$scope.preferenceList = $scope.allPreferences[PreferenceData.getType()];
+
+	$scope.savePreference = function(preference) {
+		PreferenceData.savePreference(preference);
+	}
+}]);
+
 angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) {
-	console.log('heelo');
 	$scope.visible = true;
 
 	$scope.showInput = function() {
@@ -114,4 +299,56 @@ angular.module('eetup').controller('addPeopleCtrl', ['$scope', function($scope) 
 		}	
 	}
 
-	}]);
+}]);
+
+angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'PreferenceData', function($scope, LocationData, PreferenceData) {
+	$scope.placeCandidates = [];
+
+	$scope.findPlaces = function() {
+		var map;
+		var service;
+		var infowindow;
+		var chosenLocation = LocationData.getArea().location;
+		var chosenPreference = PreferenceData.getPreference().name;
+		var chosenType = PreferenceData.getType();
+
+		function initialize() {
+		  console.log(chosenLocation);
+		  var theLocation = new google.maps.LatLng(chosenLocation.latitude, chosenLocation.longitude);
+
+		  map = new google.maps.Map(document.getElementById('map'), {
+		      center: theLocation,
+		      zoom: 15
+		    });
+
+		  var request = {
+		    location: theLocation,
+		    radius: '500',
+		    query: chosenPreference + ' ' + chosenType
+		  };
+
+		  service = new google.maps.places.PlacesService(map);
+		  service.textSearch(request, callback);
+		}
+
+		function callback(results, status) {
+		  if (status == google.maps.places.PlacesServiceStatus.OK) {
+		    for (var i = 0; i < results.length; i++) {
+		      var place = results[i];
+		    }
+
+		    for(var i = 0; i < 3; i++) {
+		    	var randomNum = Math.floor(Math.random() * results.length);
+		    	$scope.placeCandidates.push(results.splice(randomNum, 1)[0]);
+		    }
+		  }
+		}
+
+		initialize();
+
+		console.log($scope.placeCandidates);
+	}
+
+	$scope.findPlaces();
+
+}]);
