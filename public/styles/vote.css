@@ -1,6 +1,4 @@
-body {
-	/*background-color: gray;*/
-}
+
 
 img.thumbnail {
 	width: 150px;
@@ -42,4 +40,14 @@ img.tube {
 	width: 30px;
 	background-color: green;
 	border-radius: 50%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+	height: 400px;
 }

@@ -1,139 +1,14 @@
-<link rel="stylesheet" type="text/css" href="styles/vote.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+<link rel="stylesheet" href="styles/vote.css"/>
+<div id="map"></div>
 
-<div class="row">
-	<div class="columns small-12">
-		<h2 class="text-center">Dinner in Soho at 7.30</h2>
-		<h3 class="text-center">Vote for where you want to eat</h3>
+<button ng-click="findPlaces()"></button>
+
+<div class="voteOptions">
+	<div ng-repeat="candidate in placeCandidates">
+		{{ candidate.name }}
+		{{ candidate.rating }}
+		<button ng-click="savePlace(candidate)">Vote</button>
 	</div>
 </div>
 
-<div class="row">
-	<div class="columns small-12">
-		<div class="row">
-			<div class="columns small-12 restaurant-result">
-				<div class="row">
-					<div class="columns small-2">
-						<img class="thumbnail" src="http://www.burgerweb.com/wp-content/uploads/2015/07/Hache2.jpg">
-					</div>
-					<div class="columns small-10">
-						<div>
-							<h2>Honest Burgers
-								<!-- <span class="subheader">££</span>  -->
-								<span class="right gray">
-									4.6
-									<i class="fa fa-star gold"></i>
-									<i class="fa fa-star gold"></i>
-									<i class="fa fa-star gold"></i>
-									<i class="fa fa-star gold"></i> 
-									<i class="fa fa-star gray"></i>
-								</span>
-								
-							</h2>
-						</div>
-						<a href="http://www.honestburgers.co.uk/wp-content/uploads/2014/03/HonestBurgers_FoodSmall7.pdf" target="_blank">
-							<button>
-								See Menu
-							</button>
-						</a>
-						<button>
-							See Location
-						</button>
-						<a href="#/waiting">
-							<button class="success no-margin right">
-								I want to eat here
-							</button>
-						</a>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="columns small-12 restaurant-result">
-				<div class="row">
-					<div class="columns small-2">
-						<img class="thumbnail" src="http://www.pbmikasushisd.com/communities/7/004/006/926/747/images/4524569492.jpg">
-					</div>
-					<div class="columns small-10">
-						<div>
-							<h2>Yoobi Sushi 
-								<!-- <span class="subheader">££</span>  -->
-								<span class="right gray">
-									3.8
-									<i class="fa fa-star gold"></i>
-									<i class="fa fa-star gold"></i>
-									<i class="fa fa-star gold"></i>
-									<i class="fa fa-star gold"></i> 
-									<i class="fa fa-star gray"></i>
-								</span>
-								
-							</h2>
-						</div>
-						<a href="http://www.honestburgers.co.uk/wp-content/uploads/2014/03/HonestBurgers_FoodSmall7.pdf" target="_blank">
-							<button>
-								See Menu
-							</button>
-						</a>
-						<button>
-							See Location
-						</button>
-						
-						<a href="#/waiting">
-							<button class="success no-margin right">
-								I want to eat here
-							</button>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="columns small-12 restaurant-result">
-				<div class="row">
-					<div class="columns small-2">
-						<img class="thumbnail" src="http://pizzapilgrims.co.uk/wp-content/uploads/2013/03/Screen-Shot-2013-05-03-at-14.28.13.png">
-					</div>
-					<div class="columns small-10">
-						<div>
-							<h2>Pizza Pilgrims
-								<!-- <span class="subheader">££</span>  -->
-								<span class="right gray">
-									4.0
-									<i class="fa fa-star gold"></i>
-									<i class="fa fa-star gold"></i>
-									<i class="fa fa-star gold"></i>
-									<i class="fa fa-star gold"></i> 
-									<i class="fa fa-star gray"></i>
-								</span>
-								
-							</h2>
-						</div>
-						<a href="http://www.honestburgers.co.uk/wp-content/uploads/2014/03/HonestBurgers_FoodSmall7.pdf" target="_blank">
-							<button>
-								See Menu
-							</button>
-						</a>
-						<button>
-							See Location
-						</button>
-						
-						<a href="#/waiting">
-							<button class="success no-margin right">
-								I want to eat here
-							</button>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
-
-
-	</div>
-</div>

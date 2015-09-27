@@ -1,0 +1,28 @@
+<link href="styles/addpeople.css" rel="stylesheet">
+
+<div class="attendeeList">
+	<div class="friend" ng-repeat="attendee in attendees">
+		<img class="friendPicture" height="50" width="50" src="{{ attendee.picture }}"/>
+		<p>{{ attendee.name }}</p>
+	</div>
+</div>
+
+<div class="invite">
+	<button class="invitePerson" ng-click="showInput()">
+		+
+	</button>
+	<p ng-show="visible">Invite More Friends</p>
+	<input ng-model="personTel" ng-hide="visible" class="phoneNumber" type="tel" />
+	<button class="inviteAction" ng-hide="visible" ng-click="addPerson(); showInput()">
+		<i class="fa fa-check-circle"></i>
+	</button>
+	<button class="inviteAction" ng-hide="visible" ng-click="showInput()">
+		<i class="fa fa-times-circle"></i>
+	</button>
+</div>
+
+<a href="#vote">
+	<button>
+		All Done
+	</button>
+</a>
