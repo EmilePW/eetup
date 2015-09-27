@@ -6,7 +6,11 @@
 			<i class="fa fa-chevron-up"></i>
 		</button>
 		<div class="timeChoose" ng-repeat="time in times" ng-show="$index === currentIndex">
-			<button>{{ time }}</button>
+			<a href="#chooseMethod">
+				<button ng-click="">
+				{{ time }}
+				</button>
+			</a>
 		</div>
 		<button class="changeTime" ng-click="nextIndex()">
 			<i class="fa fa-chevron-down"></i>

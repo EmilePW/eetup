@@ -1,3 +1,7 @@
+.attendeeList {
+	width: 200px;
+	margin: 0 auto;
+}
 
 .invite {
 	margin: 0 auto;
@@ -10,18 +14,16 @@
 	margin-bottom: 20px;
 }
 
+.friend p{
+	margin-top: 10px;
+	font-size: 22px;
+}
+
 .friendPicture {
-	clear: both;
 	border-radius: 100%;
 }
 
-.attendeeList p {
-	clear: both;
-	float: right;
-}
-
 .invitePerson {
-	float: left;
 	border-radius: 100%;
 	width: 50px;
 	height: 50px;

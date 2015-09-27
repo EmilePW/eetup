@@ -1,12 +1,4 @@
-.chooseType {
-	margin-top: 250px;
-}
-
-.chooseType .row {
-	margin-top: 50px;
-}
-
-.chooseType button {
+button {
 	width: 200px;
 	height: 50px;
 	background: rgba(25, 25, 25, 0.3);
@@ -16,7 +8,15 @@
 	color: #fff;
 }
 
-.chooseType button:hover {
+button:hover {
 	background: rgba(25, 25, 25, 0.8);
 	color: #fff;
+}
+
+.row {
+	margin-top: 30px;
+}
+
+.methods {
+	margin-top: 200px;
 }

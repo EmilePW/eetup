@@ -1,16 +1,20 @@
 <link href="styles/addpeople.css" rel="stylesheet">
 
 <div class="attendeeList">
-	<div class="friend" ng-repeat="attendee in attendees">
-		<img class="friendPicture" height="50" width="50" src="{{ attendee.picture }}"/>
-		<p>{{ attendee.name }}</p>
+	<div class="row friend" ng-repeat="attendee in attendees">
+		<div class="col-xs-2 text-center">
+			<img class="friendPicture" height="50" width="50" src="{{ attendee.picture }}"/>
+		</div>
+		<div class="col-xs-8 col-xs-offset-2 text-center">
+			<p>{{ attendee.name }}</p>
+		</div>
 	</div>
 </div>
 
-<div class="invite">
-	<button class="invitePerson" ng-click="showInput()">
-		+
-	</button>
+<div class="invite row">
+		<button class="invitePerson" ng-click="showInput()">
+			+
+		</button>
 	<p ng-show="visible">Invite More Friends</p>
 	<input ng-model="personTel" ng-hide="visible" class="phoneNumber" type="tel" />
 	<button class="inviteAction" ng-hide="visible" ng-click="addPerson(); showInput()">

@@ -1,5 +1,11 @@
-<a href="#choosePreference">
-	<button ng-repeat="area in areas" ng-click="saveArea(area)">
-		{{ area.name }}
-	</button>
-</a>
+<link href="styles/areaChoose.css" rel="stylesheet" />
+
+<div class="row" ng-repeat="area in areas">
+	<div class="col-xs-12 text-center">
+		<a href="#choosePreference">
+			<button ng-click="saveArea(area)">
+				{{ area.name }}
+			</button>
+		</a>
+	</div>
+</div>

@@ -356,8 +356,6 @@ angular.module('eetup').controller('voteCtrl', ['$scope', 'LocationData', 'Prefe
 		}
 
 		initialize();
-
-		console.log($scope.placeCandidates);
 	}
 
 	$scope.findPlaces();
