@@ -121,18 +121,19 @@ angular.module('eetup').controller('timeCtrl', ['$scope', function($scope) {
 			times.push(hours + ':' + minutes);
 		}
 
-		console.log(times);
 		return times;
 	}
 
 	$scope.currentIndex = 0;
 
 	$scope.nextIndex = function() {
-		$scope.currentIndex++;
+		$scope.currentIndex = ($scope.currentIndex + 1) % $scope.times.length;
 	}
 
 	$scope.prevIndex = function() {
-		$scope.currentIndex--;
+		$scope.currentIndex === 0 ? 
+			$scope.currentIndex = $scope.times.length - 1 :		
+			$scope.currentIndex = ($scope.currentIndex - 1) % $scope.times.length;
 	}
 
 	$scope.times = $scope.getTimes(0);
