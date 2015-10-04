@@ -45,6 +45,10 @@
 		    alert("User cancelled the Facebook login or did not fully authorize.");
 		  }
 		});
+
+		FB.api('/me/friends', function(response){ 
+			console.log(response);
+		});
 	  };
 
 	  (function(d, s, id){
