@@ -1,3 +1,13 @@
+'use strict';
+
+// Function to log people in and get permissions
+function fbEntry() {
+	FB.login(function(response) {
+		console.log(response);
+	}, {scope:'email,user_friends'});
+}
+
+
 window.fbAsyncInit = function() {
     FB.init({
       appId      : '138085636546297',
@@ -12,11 +22,13 @@ window.fbAsyncInit = function() {
       version    : 'v2.4'
     });
 
+    FB.login()
+
 
     FB.getLoginStatus(function(response) {
     	console.log(response);
 
-	    FB.api('/me/friends',function(res) {
+	    FB.api('/{friend-list-id}/members',function(res) {
 	    	console.log(res);
 	    });
 	});
