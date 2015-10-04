@@ -3,7 +3,7 @@ window.fbAsyncInit = function() {
       appId      : '138085636546297',
 
       // Prevents cross-domain issues
-      channelUrl: 'channel.html'
+      channelUrl: 'channel.html',
 
       cookie	 : true,
 
