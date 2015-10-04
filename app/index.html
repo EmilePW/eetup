@@ -40,15 +40,17 @@
 		    } else {
 		      alert("User logged in through Facebook!");
 		    }
+
+		    FB.api('/me/friends', function(response){ 
+				console.log(response);
+			});
 		  },
 		  error: function(user, error) {
 		    alert("User cancelled the Facebook login or did not fully authorize.");
 		  }
 		});
 
-		FB.api('/me/friends', function(response){ 
-			console.log(response);
-		});
+
 	  };
 
 	  (function(d, s, id){
