@@ -16,7 +16,7 @@ window.fbAsyncInit = function() {
     FB.getLoginStatus(function(response) {
     	console.log(response);
 
-	    FB.api('/me',function(res) {
+	    FB.api('/me/friends',function(res) {
 	    	console.log(res);
 	    });
 	});
