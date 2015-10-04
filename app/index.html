@@ -41,9 +41,20 @@
 		      alert("User logged in through Facebook!");
 		    }
 
+		    console.log(FB.getAuthResponse().accessToken);
+
 		    FB.api('/me/friends', function(response){ 
 				console.log(response);
 			});
+
+			FB.api(
+			    "/{friend-list-id}",
+			    function (response) {
+			      if (response && !response.error) {
+			        /* handle the result */
+			      }
+			    }
+			);
 		  },
 		  error: function(user, error) {
 		    alert("User cancelled the Facebook login or did not fully authorize.");
