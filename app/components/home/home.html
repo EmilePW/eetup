@@ -1,0 +1,13 @@
+<link href="components/home/home.css" rel="stylesheet"/>
+
+<div class="chooseType">
+	<div class="row" ng-repeat="type in types">
+		<div class="col-xs-12 text-center">
+			<a href="#chooseTime">
+				<button ng-click="saveType(type)">
+					{{ type.name }}
+				</button>
+			</a>
+		</div>
+	</div>
+</div>

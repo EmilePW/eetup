@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eetup">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Eetup</title>
+	<!-- Load Parse CDN -->
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link href="shared/css/universal.css" rel="stylesheet"/>
+</head>
+<body class="container-fluid">
+	<!-- Parse user setup -->
+	<script src="js/parse/parseUserAccounts.js"></script>
+	
+	<!-- Load Facebook JS SDK -->
+	<script>
+	  window.fbAsyncInit = function() {
+	    Parse.FacebookUtils.init({
+	      appId      : '138085636546297',
+	      status	 : true,
+	      cookies	 : true,
+	      xfbml      : true,
+	      version    : 'v2.4'
+	    });
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+
+	  Parse.FacebookUtils.logIn(null, {
+		  success: function(user) {
+		    if (!user.existed()) {
+		      alert("User signed up and logged in through Facebook!");
+		    } else {
+		      alert("User logged in through Facebook!");
+		    }
+		  },
+		  error: function(user, error) {
+		    alert("User cancelled the Facebook login or did not fully authorize.");
+		  }
+		});
+	</script>
+
+	<div class="image slide non-draggable"
+		ng-style="{
+			'z-index': '-1',
+			'position': 'absolute',
+			'height': '100%',
+			'width': '100%',
+			'margin': '0',
+			'top': '0',
+			'left': '0',
+			'opacity': '0.5',
+			'background': 'url(images/bg-food-1.jpg) no-repeat center center fixed',
+			'-webkit-background-size': 'cover',
+			'-moz-background-size': 'cover',
+			'-o-background-size': 'cover',
+			'background-size': 'cover'
+		}">
+	</div>
+
+	<!-- Logo -->
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<img height="80" src="images/eetup-logo.png" />
+		</div>
+	</div>
+
+	<div ng-view></div>
+
+	
+
+	<!-- Load Angular and dependencies -->
+	<script src="https://code.angularjs.org/1.4.5/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.4.5/angular-route.min.js"></script>
+	<script src="https://code.angularjs.org/1.4.5/angular-animate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-touch.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-css/1.0.7/angular-css.min.js"></script>
+
+	<!-- App setup and routing script -->
+	<script src="app.js"></script>
+	
+	<!-- Controllers -->
+	<script src="components/home/homeCtrl.js"></script>
+	<script src="components/chooseTime/chooseTimeCtrl.js"></script>
+	<script src="components/chooseMethod/chooseMethodCtrl.js"></script>
+	<script src="components/chooseArea/chooseAreaCtrl.js"></script>
+	<script src="components/choosePreference/choosePreferenceCtrl.js"></script>
+	<script src="components/choosePeople/choosePeopleCtrl.js"></script>
+	<script src="components/vote/voteCtrl.js"></script>
+	<script src="components/waiting/waitingCtrl.js"></script>
+	<script src="components/booked/bookedCtrl.js"></script>
+	<script src="components/map/mapCtrl.js"></script>
+
+	<!-- Load Factories -->
+	<script src="shared/factories/LocationData.js"></script>
+	<script src="shared/factories/PlaceData.js"></script>
+	<script src="shared/factories/PreferenceData.js"></script>
+	<script src="shared/factories/TimeData.js"></script>	
+</body>
+</html>

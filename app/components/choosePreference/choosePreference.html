@@ -1,0 +1,19 @@
+<link href="components/choosePreference/choosePreference.css" rel="stylesheet" />
+
+<!--
+<div class="row">
+	<div class="col-xs-12 text-center">
+		<h5>Select your preference</h5>
+	</div>
+</div>
+-->
+
+<div class="row" ng-repeat="preference in preferenceList">
+	<div class="col-xs-12 text-center">
+		<a href="#choosePeople">
+			<button  ng-click="savePreference(preference)">
+				{{ preference.name }}
+			</button>
+		</a>
+	</div>
+</div>

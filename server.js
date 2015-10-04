@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-app.use(express.static(__dirname + '/public')); 
+app.use(express.static(__dirname + '/app')); 
 
 
 app.get('/', function(req, res) {
@@ -13,4 +13,4 @@ app.listen(port);
 
 console.log('Listening on localhost: ' + port);
 
-exports = module.exports = app;      
+exports = module.exports = app;
