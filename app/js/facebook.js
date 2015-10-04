@@ -11,6 +11,15 @@ window.fbAsyncInit = function() {
 
       version    : 'v2.4'
     });
+
+
+    FB.getLoginStatus(function(response) {
+    	console.log(response);
+
+	    FB.api('/me',function(res) {
+	    	console.log(res);
+	    });
+	});
   };
 
   (function(d, s, id){
