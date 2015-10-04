@@ -4,8 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Eetup</title>
-	<!-- Load Parse CDN -->
-	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+	
 
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -18,30 +17,23 @@
 	<link href="shared/css/universal.css" rel="stylesheet"/>
 </head>
 <body class="container-fluid">
+	<!-- Load Parse CDN -->
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+
 	<!-- Parse user setup -->
 	<script src="js/parse/parseUserAccounts.js"></script>
-	
+
 	<!-- Load Facebook JS SDK -->
 	<script>
 	  window.fbAsyncInit = function() {
 	    Parse.FacebookUtils.init({
 	      appId      : '138085636546297',
-	      status	 : true,
 	      cookies	 : true,
 	      xfbml      : true,
 	      version    : 'v2.4'
 	    });
-	  };
 
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/en_US/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-
-	  Parse.FacebookUtils.logIn(null, {
+	    Parse.FacebookUtils.logIn(null, {
 		  success: function(user) {
 		    if (!user.existed()) {
 		      alert("User signed up and logged in through Facebook!");
@@ -53,6 +45,17 @@
 		    alert("User cancelled the Facebook login or did not fully authorize.");
 		  }
 		});
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+
+	  
 	</script>
 
 	<div class="image slide non-draggable"
